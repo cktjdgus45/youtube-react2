@@ -1,23 +1,14 @@
 import React from 'react';
 import styles from './video_list.module.css';
+import VideoItem from '../video_item/video_item';
 
 const VideoList = ({ videos }) => {
     return (
         <ul className={styles.videos}>
             {
-                videos.map(video =>
-                (
-                    <li key={video.snippet.id} className={styles.container}>
-                        <div className={styles.video}>
-                            <img className={styles.thumbnail} src={video.snippet.thumbnails.default.url} alt='thumbnail'></img>
-                            <div className={styles.metadata}>
-                                <p className={styles.title}>{video.snippet.title}</p>
-                                <p className={styles.channel}>{video.snippet.channelTitle}</p>
-                            </div>
-                        </div>
-                    </li>
-                )
-                )
+                videos.map(video => (
+                    <VideoItem key={video.id} video={video} />
+                ))
             }
         </ul>
     )
