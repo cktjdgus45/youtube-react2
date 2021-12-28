@@ -11,14 +11,12 @@ class Youtube {
     async search(query) {
         const response = await fetch(`${this.baseurl}/search?part=snippet&maxResults=25&q=${query}&key=${this.key}`, this.requestOptions);
         const data = await response.json();
-        console.log(data);
         return data;
     }
 
     async mostPopularVideo() {
         const response = await fetch(`${this.baseurl}/videos?part=snippet&chart=mostPopular&maxResults=25&key=${this.key}`, this.requestOptions);
         const data = await response.json();
-        console.log(data);
         return data;
     }
 }
