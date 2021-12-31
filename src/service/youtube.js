@@ -9,7 +9,7 @@ class Youtube {
     }
 
     async search(query) {
-        const response = await fetch(`${this.baseurl}/search?part=snippet&maxResults=25&q=${query}&key=${this.key}`, this.requestOptions);
+        const response = await fetch(`${this.baseurl}/search?part=snippet&maxResults=25&q=${query}&type=video&key=${this.key}`, this.requestOptions);
         const data = await response.json();
         return data;
     }
