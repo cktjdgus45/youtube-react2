@@ -12,19 +12,19 @@ function App({ youtube }) {
   const onSearch = (query) => {
     youtube.search(query)
       .then(result => result.items.map(item => ({ ...item, id: item.id.videoId })))
-      .then(items => setVideos(items));
+      .then(items => {
+        setVideos(items);
+        setSelectedVideo({ id: null });
+      });
   }
   const onVideoClick = (selectedVideo) => {
-    console.log('video Clicked');
     setSelectedVideo(selectedVideo);
   }
-  console.log(selectedVideo);
   useEffect(() => {
     youtube.mostPopularVideo()
       .then(res => setVideos(res.items));
   }, [youtube])
 
-  console.log(videos);
 
   return (
     <div className={styles.app}>
