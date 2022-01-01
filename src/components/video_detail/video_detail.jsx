@@ -1,14 +1,22 @@
 import React from 'react';
+import styles from './video_detail.module.css';
 
-const VideoDetail = ({ video }) => {
+const VideoDetail = ({ video, video: { snippet } }) => {
     return (
-        <section>
-            <div className="video"></div>
-            <div className="metadata">
-                <h1 className="title">{video.snippet.title}</h1>
-                <h3 className='channel'>channel</h3>
-                <span className="description">description</span>
-            </div>
+        <section className={styles.detail}>
+            <iframe
+                className={styles.video}
+                title="ytIframe"
+                type="text/html"
+                width='100%'
+                height="500px"
+                src={`https://www.youtube.com/embed/${video.id}`}
+                frameborder="0"
+                allowfullscreen>
+            </iframe>
+            <h2>{snippet.title}</h2>
+            <h3>{snippet.channelTitle}</h3>
+            <pre className={styles.description}>{snippet.description}</pre>
         </section>
     )
 }
